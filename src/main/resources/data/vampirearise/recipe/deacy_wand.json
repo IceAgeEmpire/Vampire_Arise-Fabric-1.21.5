@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "O": "vampirearise:ruby",
+    "#": "minecraft:stick"
+  },
+  "pattern": [
+    "  O",
+    " # ",
+    "#  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "vampirearise:decay_wand"
+  }
+}
