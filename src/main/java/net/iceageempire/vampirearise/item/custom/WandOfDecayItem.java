@@ -13,13 +13,26 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.world.World;
 
+import java.util.AbstractMap;
 import java.util.Map;
 public class WandOfDecayItem extends Item {
 
     private static final Map<Block, Block> CHISEL_MAP =
-            Map.of(
-                    Blocks.GRASS_BLOCK, Blocks.DIRT,
-                    Blocks.DIRT, Blocks.COARSE_DIRT
+            Map.ofEntries(
+                    new AbstractMap.SimpleEntry<>(Blocks.GRASS_BLOCK, Blocks.DIRT),
+                    new AbstractMap.SimpleEntry<>(Blocks.DIRT, Blocks.COARSE_DIRT),
+                    new AbstractMap.SimpleEntry<>(Blocks.OAK_SAPLING , Blocks.DEAD_BUSH),
+                    new AbstractMap.SimpleEntry<>(Blocks.ACACIA_SAPLING , Blocks.DEAD_BUSH),
+                    new AbstractMap.SimpleEntry<>(Blocks.BAMBOO_SAPLING, Blocks.DEAD_BUSH),
+                    new AbstractMap.SimpleEntry<>(Blocks.BIRCH_SAPLING , Blocks.DEAD_BUSH),
+                    new AbstractMap.SimpleEntry<>(Blocks.CHERRY_SAPLING, Blocks.DEAD_BUSH),
+                    new AbstractMap.SimpleEntry<>(Blocks.JUNGLE_SAPLING, Blocks.DEAD_BUSH),
+                    new AbstractMap.SimpleEntry<>(Blocks.DARK_OAK_SAPLING, Blocks.DEAD_BUSH),
+                    new AbstractMap.SimpleEntry<>(Blocks.PALE_OAK_SAPLING, Blocks.DEAD_BUSH),
+                    new AbstractMap.SimpleEntry<>(Blocks.SPRUCE_SAPLING, Blocks.DEAD_BUSH),
+                    new AbstractMap.SimpleEntry<>(Blocks.CRIMSON_FUNGUS, Blocks.DEAD_BUSH),
+                    new AbstractMap.SimpleEntry<>(Blocks.WARPED_FUNGUS, Blocks.DEAD_BUSH),
+                    new AbstractMap.SimpleEntry<>(Blocks.MANGROVE_PROPAGULE, Blocks.DEAD_BUSH)
             );
 
     public WandOfDecayItem(Item.Settings settings) {
