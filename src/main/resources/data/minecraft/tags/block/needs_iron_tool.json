@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "vampirearise:ruby_block",
+    "vampirearise:raw_ruby_block",
+    "vampirearise:ruby_ore",
+    "vampirearise:deepslate_ruby_ore"
+  ]
+}
