@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "vampirearise:item/raw_ruby"
+    "model": "vampirearise:block/raw_ruby_block"
   }
 }

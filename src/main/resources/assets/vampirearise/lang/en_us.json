@@ -1,4 +1,7 @@
 {
   "item.vampirearise.ruby": "Ruby",
-  "item.vampirearise.raw_ruby": "Raw Ruby"
+  "item.vampirearise.raw_ruby": "Raw Ruby",
+
+  "item.vampirearise.ruby_block": "Ruby Block",
+  "item.vampirearise.raw_ruby_block": "Raw Ruby Block"
 }
