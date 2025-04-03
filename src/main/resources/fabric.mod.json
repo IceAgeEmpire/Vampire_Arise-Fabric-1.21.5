@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "vampirearise",
+	"version": "${version}",
+	"name": "VampireArise",
+	"description": "First Fabric Mod, it follows Kaupenjoe's tutorial. This mod has Ruby and new hostile mobs!",
+	"authors": [
+		"IceAgeEmpire!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/vampirearise/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.iceageempire.vampirearise.VampireArise"
+		],
+		"fabric-datagen": [
+			"net.iceageempire.vampirearise.VampireAriseDataGenerator"
+		],
+		"client": [
+			"net.iceageempire.vampirearise.TutorialModClient"
+		]
+	},
+	"mixins": [
+		"vampirearise.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.12",
+		"minecraft": "~1.21.5",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
