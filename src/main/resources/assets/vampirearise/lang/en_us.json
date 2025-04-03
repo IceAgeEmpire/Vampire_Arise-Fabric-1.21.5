@@ -3,5 +3,8 @@
   "item.vampirearise.raw_ruby": "Raw Ruby",
 
   "item.vampirearise.ruby_block": "Ruby Block",
-  "item.vampirearise.raw_ruby_block": "Raw Ruby Block"
+  "item.vampirearise.raw_ruby_block": "Raw Ruby Block",
+
+  "itemgroup.vampirearise.ruby_items": "Ruby Items",
+  "itemgroup.vampirearise.ruby_blocks": "Ruby Blocks"
 }
