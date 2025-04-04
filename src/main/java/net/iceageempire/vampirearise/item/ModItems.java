@@ -2,6 +2,7 @@ package net.iceageempire.vampirearise.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.iceageempire.vampirearise.VampireArise;
+import net.iceageempire.vampirearise.item.custom.RubySwordItem;
 import net.iceageempire.vampirearise.item.custom.WandOfDecayItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -18,6 +19,8 @@ public class ModItems {
             .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID,"raw_ruby")))));
     public static final Item WandOfDecay = registerItem("decay_wand", new WandOfDecayItem(new Item.Settings().maxDamage(128)
             .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID,"decay_wand")))));
+    public static final Item RUBY_SWORD = registerItem("ruby_sword", new RubySwordItem(new Item.Settings().maxDamage(635)
+            .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID,"ruby_sword")))));
 
 
 

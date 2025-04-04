@@ -3,8 +3,10 @@ package net.iceageempire.vampirearise.block;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.iceageempire.vampirearise.VampireArise;
+import net.iceageempire.vampirearise.block.custom.TurretBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.ExperienceDroppingBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -15,7 +17,6 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 public class ModBlocks {
     public static final Block RUBY_BLOCK = registerBlock("ruby_block",
@@ -31,6 +32,9 @@ public class ModBlocks {
 
     public static final Block DEEPSLATE_RUBY_ORE = registerBlock("deepslate_ruby_ore",
             ExperienceDroppingBlock.Settings.create().strength(3f).requiresTool().sounds(BlockSoundGroup.DEEPSLATE));
+
+    public static final Block TURRET_BLOCK = registerBlock("turret_block",
+            TurretBlock.Settings.create().strength(1f));
 
     private static Block registerBlock(String name, AbstractBlock.Settings blockSettings) {
         RegistryKey<Block> key = RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(VampireArise.MOD_ID, name));

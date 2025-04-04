@@ -19,6 +19,7 @@ public class ModItemGroups {
                         entries.add(ModItems.RUBY);
                         entries.add(ModItems.RAW_RUBY);
                         entries.add(ModItems.WandOfDecay);
+                        entries.add(ModItems.RUBY_SWORD);
                     }).build());
 
     public static final ItemGroup RUBY_BLOCKS_GROUP = Registry.register(Registries.ITEM_GROUP,
@@ -30,6 +31,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.RAW_RUBY_BLOCK);
                         entries.add(ModBlocks.RUBY_ORE);
                         entries.add(ModBlocks.DEEPSLATE_RUBY_ORE);
+                        entries.add(ModBlocks.TURRET_BLOCK);
                     }).build());
 
 

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "O": "vampirearise:ruby",
+    "#": "minecraft:stick"
+  },
+  "pattern": [
+    " O ",
+    " O ",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "vampirearise:ruby_sword"
+  }
+}
