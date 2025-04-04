@@ -2,6 +2,8 @@ package net.iceageempire.vampirearise.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.iceageempire.vampirearise.VampireArise;
+import net.iceageempire.vampirearise.item.custom.CustomConsumableComponents;
+import net.iceageempire.vampirearise.item.custom.ModFoodComponents;
 import net.iceageempire.vampirearise.item.custom.RubySwordItem;
 import net.iceageempire.vampirearise.item.custom.WandOfDecayItem;
 import net.minecraft.item.Item;
@@ -21,7 +23,9 @@ public class ModItems {
             .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID,"decay_wand")))));
     public static final Item RUBY_SWORD = registerItem("ruby_sword", new RubySwordItem(new Item.Settings().maxDamage(635)
             .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID,"ruby_sword")))));
-
+    public static final Item RUBY_POTATO = registerItem("ruby_potato", new Item(new Item.Settings()
+            .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID,"ruby_potato")))
+            .food(ModFoodComponents.RUBY_POTATO, CustomConsumableComponents.RUBY_POTATO)));
 
 
     private static Item registerItem(String name, Item item) {
@@ -37,6 +41,12 @@ public class ModItems {
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
             entries.add(WandOfDecay);
+        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
+            entries.add(RUBY_POTATO);
+        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
+            entries.add(RUBY_SWORD);
         });
 
     }

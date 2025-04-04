@@ -54,6 +54,8 @@ public class ModBlocks {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.add(ModBlocks.RUBY_BLOCK);
+        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
             entries.add(ModBlocks.RAW_RUBY_BLOCK);
             entries.add(ModBlocks.RUBY_ORE);
             entries.add(ModBlocks.DEEPSLATE_RUBY_ORE);

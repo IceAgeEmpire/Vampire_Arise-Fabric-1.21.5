@@ -20,6 +20,7 @@ public class ModItemGroups {
                         entries.add(ModItems.RAW_RUBY);
                         entries.add(ModItems.WandOfDecay);
                         entries.add(ModItems.RUBY_SWORD);
+                        entries.add(ModItems.RUBY_POTATO);
                     }).build());
 
     public static final ItemGroup RUBY_BLOCKS_GROUP = Registry.register(Registries.ITEM_GROUP,
