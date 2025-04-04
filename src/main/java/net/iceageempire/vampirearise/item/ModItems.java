@@ -13,6 +13,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 
 public class ModItems {
     public static final Item RUBY = registerItem("ruby", new Item(new Item.Settings()
@@ -25,6 +26,7 @@ public class ModItems {
             .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID,"ruby_sword")))));
     public static final Item RUBY_POTATO = registerItem("ruby_potato", new Item(new Item.Settings()
             .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID,"ruby_potato")))
+            .rarity(Rarity.UNCOMMON)
             .food(ModFoodComponents.RUBY_POTATO, CustomConsumableComponents.RUBY_POTATO)));
 
 
