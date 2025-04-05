@@ -4,6 +4,7 @@ package net.iceageempire.vampirearise.block;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.iceageempire.vampirearise.VampireArise;
 import net.iceageempire.vampirearise.block.custom.TurretBlock;
+import net.iceageempire.vampirearise.block.custom.WatcherBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -11,12 +12,16 @@ import net.minecraft.block.ExperienceDroppingBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.WorldAccess;
+
+import java.util.function.Function;
 
 public class ModBlocks {
     public static final Block RUBY_BLOCK = registerBlock("ruby_block",
@@ -36,6 +41,18 @@ public class ModBlocks {
     public static final Block TURRET_BLOCK = registerBlock("turret_block",
             TurretBlock.Settings.create().strength(1f));
 
+    public static final Block WACTHER_BLOCK = registerBlockV2("watcher_block",
+            WatcherBlock::new,Block.Settings.create().strength(1f).luminance(state-> state.get(WatcherBlock.CLICKED) ? 15 : 0));
+
+
+    private static Block registerBlockV2(String path, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
+        final Identifier identifier = Identifier.of("vampirearise", path);
+        final RegistryKey<Block> registryKey = RegistryKey.of(RegistryKeys.BLOCK, identifier);
+
+        final Block block = Blocks.register(registryKey, factory, settings);
+        Items.register(block);
+        return block;
+    }
     private static Block registerBlock(String name, AbstractBlock.Settings blockSettings) {
         RegistryKey<Block> key = RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(VampireArise.MOD_ID, name));
         Block block = new Block(blockSettings.registryKey(key));
