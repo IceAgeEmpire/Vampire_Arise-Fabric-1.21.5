@@ -20,7 +20,7 @@ public class ModItems {
             .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID,"ruby")))));
     public static final Item RAW_RUBY = registerItem("raw_ruby", new Item(new Item.Settings()
             .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID,"raw_ruby")))));
-    public static final Item WandOfDecay = registerItem("decay_wand", new WandOfDecayItem(new Item.Settings().maxDamage(128)
+    public static final Item DECAY_WAND = registerItem("decay_wand", new WandOfDecayItem(new Item.Settings().maxDamage(128)
             .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID,"decay_wand")))));
     public static final Item RUBY_SWORD = registerItem("ruby_sword", new RubySwordItem(new Item.Settings().maxDamage(635)
             .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID,"ruby_sword")))));
@@ -42,7 +42,7 @@ public class ModItems {
             entries.add(RAW_RUBY);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
-            entries.add(WandOfDecay);
+            entries.add(DECAY_WAND);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
             entries.add(RUBY_POTATO);

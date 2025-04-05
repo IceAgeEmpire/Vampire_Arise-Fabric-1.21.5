@@ -18,7 +18,7 @@ public class ModItemGroups {
                     .entries((displayContext, entries) -> {
                         entries.add(ModItems.RUBY);
                         entries.add(ModItems.RAW_RUBY);
-                        entries.add(ModItems.WandOfDecay);
+                        entries.add(ModItems.DECAY_WAND);
                         entries.add(ModItems.RUBY_SWORD);
                         entries.add(ModItems.RUBY_POTATO);
                     }).build());

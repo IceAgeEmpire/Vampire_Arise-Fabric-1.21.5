@@ -3,9 +3,11 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.2,
-  "group": "pink_garnet",
+  "group": "ruby",
   "ingredient": [
-    "vampirearise:raw_ruby"
+    "vampirearise:raw_ruby",
+    "vampirearise:ruby_ore",
+    "vampirearise:deepslate_ruby_ore"
   ],
   "result": {
     "id": "vampirearise:ruby"
