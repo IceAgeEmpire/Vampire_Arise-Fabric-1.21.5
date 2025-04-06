@@ -21,6 +21,11 @@ public class ModItemGroups {
                         entries.add(ModItems.DECAY_WAND);
                         entries.add(ModItems.RUBY_SWORD);
                         entries.add(ModItems.RUBY_POTATO);
+                        entries.add(ModItems.RUBY_AXE);
+                        entries.add(ModItems.RUBY_HOE);
+                        entries.add(ModItems.RUBY_PICKAXE);
+                        entries.add(ModItems.RUBY_SHOVEL);
+
                     }).build());
 
     public static final ItemGroup RUBY_BLOCKS_GROUP = Registry.register(Registries.ITEM_GROUP,

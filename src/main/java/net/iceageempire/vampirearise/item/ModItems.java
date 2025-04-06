@@ -2,12 +2,11 @@ package net.iceageempire.vampirearise.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.iceageempire.vampirearise.VampireArise;
-import net.iceageempire.vampirearise.item.custom.CustomConsumableComponents;
 import net.iceageempire.vampirearise.item.custom.ModFoodComponents;
+import net.iceageempire.vampirearise.item.custom.ModToolMaterials;
 import net.iceageempire.vampirearise.item.custom.RubySwordItem;
 import net.iceageempire.vampirearise.item.custom.WandOfDecayItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -27,7 +26,20 @@ public class ModItems {
     public static final Item RUBY_POTATO = registerItem("ruby_potato", new Item(new Item.Settings()
             .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID,"ruby_potato")))
             .rarity(Rarity.UNCOMMON)
-            .food(ModFoodComponents.RUBY_POTATO, CustomConsumableComponents.RUBY_POTATO)));
+            .food(ModFoodComponents.RUBY_POTATO, ModFoodComponents.RUBY_POTATO_EFFECT)));
+
+    public static final Item RUBY_PICKAXE = registerItem("ruby_pickaxe",
+            new Item(new Item.Settings().pickaxe(ModToolMaterials.RUBY, 1, -2.8f)
+                    .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, "ruby_pickaxe")))));
+    public static final Item RUBY_SHOVEL = registerItem("ruby_shovel",
+            new ShovelItem(ModToolMaterials.RUBY, 1.5f, -3.0f, new Item.Settings()
+                    .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, "ruby_shovel")))));
+    public static final Item RUBY_AXE = registerItem("ruby_axe",
+            new AxeItem(ModToolMaterials.RUBY, 6, -3.05f, new Item.Settings()
+                    .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, "ruby_axe")))));
+    public static final Item RUBY_HOE = registerItem("ruby_hoe",
+            new HoeItem(ModToolMaterials.RUBY, -2, -1f, new Item.Settings()
+                    .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, "ruby_hoe")))));
 
 
     private static Item registerItem(String name, Item item) {
@@ -43,6 +55,10 @@ public class ModItems {
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
             entries.add(DECAY_WAND);
+            entries.add(RUBY_AXE);
+            entries.add(RUBY_HOE);
+            entries.add(RUBY_PICKAXE);
+            entries.add(RUBY_SHOVEL);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
             entries.add(RUBY_POTATO);
