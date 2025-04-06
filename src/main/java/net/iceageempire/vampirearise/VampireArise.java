@@ -2,6 +2,7 @@ package net.iceageempire.vampirearise;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.iceageempire.vampirearise.block.ModBlocks;
 import net.iceageempire.vampirearise.component.ModDataComponentTypes;
 import net.iceageempire.vampirearise.item.ModItemGroups;
@@ -21,5 +22,8 @@ public class VampireArise implements ModInitializer {
 		ModBlocks.registerModBlocks();
 		ModLootTables.modifyLootTables();
 		ModDataComponentTypes.registerDataComponentTypes();
+
+		FuelRegistryEvents.BUILD.register((builder, context) ->
+				builder.add(ModItems.DECAY_WAND, 200));
 	}
 }
