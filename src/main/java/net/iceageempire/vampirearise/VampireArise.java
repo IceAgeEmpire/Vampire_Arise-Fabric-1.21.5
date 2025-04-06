@@ -3,6 +3,7 @@ package net.iceageempire.vampirearise;
 import net.fabricmc.api.ModInitializer;
 
 import net.iceageempire.vampirearise.block.ModBlocks;
+import net.iceageempire.vampirearise.component.ModDataComponentTypes;
 import net.iceageempire.vampirearise.item.ModItemGroups;
 import net.iceageempire.vampirearise.item.ModItems;
 import net.iceageempire.vampirearise.loot_table.ModLootTables;
@@ -19,5 +20,6 @@ public class VampireArise implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModLootTables.modifyLootTables();
+		ModDataComponentTypes.registerDataComponentTypes();
 	}
 }

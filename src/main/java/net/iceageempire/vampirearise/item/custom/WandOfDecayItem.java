@@ -1,20 +1,27 @@
 package net.iceageempire.vampirearise.item.custom;
 
 
+import net.iceageempire.vampirearise.component.ModDataComponentTypes;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.component.type.TooltipDisplayComponent;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.world.World;
 
 import java.util.AbstractMap;
 import java.util.Map;
+import java.util.function.Consumer;
+
 public class WandOfDecayItem extends Item {
 
     private static final Map<Block, Block> CHISEL_MAP =
@@ -52,9 +59,16 @@ public class WandOfDecayItem extends Item {
                         item -> context.getPlayer().sendEquipmentBreakStatus(item, EquipmentSlot.MAINHAND));
 
                 world.playSound(null, context.getBlockPos(), SoundEvents.BLOCK_ROOTED_DIRT_PLACE, SoundCategory.BLOCKS);
+                context.getStack().set(ModDataComponentTypes.COORDINATES, context.getBlockPos());
             }
         }
 
         return ActionResult.SUCCESS;
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
+        if(stack.get(ModDataComponentTypes.COORDINATES) != null)
+            textConsumer.accept(Text.translatable("Last Block Changed at " + stack.get(ModDataComponentTypes.COORDINATES)));
     }
 }
