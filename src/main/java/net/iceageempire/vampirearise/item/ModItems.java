@@ -2,10 +2,7 @@ package net.iceageempire.vampirearise.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.iceageempire.vampirearise.VampireArise;
-import net.iceageempire.vampirearise.item.custom.ModFoodComponents;
-import net.iceageempire.vampirearise.item.custom.ModToolMaterials;
-import net.iceageempire.vampirearise.item.custom.RubySwordItem;
-import net.iceageempire.vampirearise.item.custom.WandOfDecayItem;
+import net.iceageempire.vampirearise.item.custom.*;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -40,6 +37,9 @@ public class ModItems {
     public static final Item RUBY_HOE = registerItem("ruby_hoe",
             new HoeItem(ModToolMaterials.RUBY, -2, -1f, new Item.Settings()
                     .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, "ruby_hoe")))));
+    public static final Item RUBY_HAMMER = registerItem("ruby_hammer",
+            new RubyHammerItem(new Item.Settings().pickaxe(ModToolMaterials.RUBY, 9, -3.5f)
+                    .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, "ruby_hammer")))));
 
 
     private static Item registerItem(String name, Item item) {
@@ -59,6 +59,7 @@ public class ModItems {
             entries.add(RUBY_HOE);
             entries.add(RUBY_PICKAXE);
             entries.add(RUBY_SHOVEL);
+            entries.add(RUBY_HAMMER);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
             entries.add(RUBY_POTATO);

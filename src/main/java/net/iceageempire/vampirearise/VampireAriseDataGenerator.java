@@ -111,6 +111,7 @@ public class VampireAriseDataGenerator implements DataGeneratorEntrypoint {
 			itemModelGenerator.register(ModItems.RUBY_HOE, Models.HANDHELD);
 			itemModelGenerator.register(ModItems.RUBY_PICKAXE, Models.HANDHELD);
 			itemModelGenerator.register(ModItems.RUBY_SHOVEL, Models.HANDHELD);
+			itemModelGenerator.register(ModItems.RUBY_HAMMER, Models.HANDHELD);
 		}
 	}
 	public static class ModRecipeProvider extends FabricRecipeProvider {
@@ -221,6 +222,15 @@ public class VampireAriseDataGenerator implements DataGeneratorEntrypoint {
 							.pattern("###")
 							.input('O', ModItems.RUBY)
 							.input('#', Items.POLISHED_DEEPSLATE)
+							.criterion(hasItem(ModItems.RUBY), conditionsFromItem(ModItems.RUBY))
+							.offerTo(exporter);
+
+					createShaped(RecipeCategory.TOOLS, ModItems.RUBY_HAMMER)
+							.pattern("OOO")
+							.pattern(" # ")
+							.pattern(" # ")
+							.input('O', ModBlocks.RUBY_BLOCK)
+							.input('#', Items.STICK)
 							.criterion(hasItem(ModItems.RUBY), conditionsFromItem(ModItems.RUBY))
 							.offerTo(exporter);
 

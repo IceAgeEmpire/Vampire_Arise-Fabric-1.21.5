@@ -25,7 +25,7 @@ public class ModItemGroups {
                         entries.add(ModItems.RUBY_HOE);
                         entries.add(ModItems.RUBY_PICKAXE);
                         entries.add(ModItems.RUBY_SHOVEL);
-
+                        entries.add(ModItems.RUBY_HAMMER);
                     }).build());
 
     public static final ItemGroup RUBY_BLOCKS_GROUP = Registry.register(Registries.ITEM_GROUP,
