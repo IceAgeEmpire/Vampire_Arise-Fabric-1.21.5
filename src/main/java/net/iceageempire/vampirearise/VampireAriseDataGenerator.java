@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.iceageempire.vampirearise.block.ModBlocks;
+import net.iceageempire.vampirearise.item.ModEquipmentAssets;
 import net.iceageempire.vampirearise.item.ModItems;
 import net.iceageempire.vampirearise.util.ModTags;
 import net.minecraft.client.data.*;
@@ -112,6 +113,26 @@ public class VampireAriseDataGenerator implements DataGeneratorEntrypoint {
 			itemModelGenerator.register(ModItems.RUBY_PICKAXE, Models.HANDHELD);
 			itemModelGenerator.register(ModItems.RUBY_SHOVEL, Models.HANDHELD);
 			itemModelGenerator.register(ModItems.RUBY_HAMMER, Models.HANDHELD);
+			itemModelGenerator.registerArmor(
+					ModItems.RUBY_HELMET,
+					ModEquipmentAssets.RUBY_ARMOR_MATERIAL_KEY,
+					Identifier.of("vampirearise", "ruby"), false
+			);
+			itemModelGenerator.registerArmor(
+					ModItems.RUBY_CHESTPLATE,
+					ModEquipmentAssets.RUBY_ARMOR_MATERIAL_KEY,
+					Identifier.of("vampirearise", "ruby"), false
+			);
+			itemModelGenerator.registerArmor(
+					ModItems.RUBY_LEGGINGS,
+					ModEquipmentAssets.RUBY_ARMOR_MATERIAL_KEY,
+					Identifier.of("vampirearise", "ruby"), false
+			);
+			itemModelGenerator.registerArmor(
+					ModItems.RUBY_BOOTS,
+					ModEquipmentAssets.RUBY_ARMOR_MATERIAL_KEY,
+					Identifier.of("vampirearise", "ruby"), false
+			);
 		}
 	}
 	public static class ModRecipeProvider extends FabricRecipeProvider {
@@ -233,14 +254,6 @@ public class VampireAriseDataGenerator implements DataGeneratorEntrypoint {
 							.input('#', Items.STICK)
 							.criterion(hasItem(ModItems.RUBY), conditionsFromItem(ModItems.RUBY))
 							.offerTo(exporter);
-
-//					createShapeless(RecipeCategory.MISC, ModItems.RAW_RUBY, 32)
-//							.input(ModBlocks.MAGIC_BLOCK)
-//							.criterion(hasItem(ModBlocks.MAGIC_BLOCK), conditionsFromItem(ModBlocks.MAGIC_BLOCK))
-//							.offerTo(exporter, RegistryKey.of(RegistryKeys.RECIPE, Identifier.of(TutorialMod.MOD_ID, "raw_ruby_from_magic_block")));
-
-//					offerSmithingTrimRecipe(ModItems.KAUPEN_SMITHING_TEMPLATE, RegistryKey.of(RegistryKeys.RECIPE,
-//							Identifier.ofVanilla(getItemPath(ModItems.KAUPEN_SMITHING_TEMPLATE) + "_smithing_trim")));
 				}
 			};
 		}

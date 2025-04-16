@@ -4,12 +4,15 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.iceageempire.vampirearise.VampireArise;
 import net.iceageempire.vampirearise.item.custom.*;
 import net.minecraft.item.*;
+import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
+
+import static net.minecraft.item.Items.register;
 
 public class ModItems {
     public static final Item RUBY = registerItem("ruby", new Item(new Item.Settings()
@@ -40,8 +43,18 @@ public class ModItems {
     public static final Item RUBY_HAMMER = registerItem("ruby_hammer",
             new RubyHammerItem(new Item.Settings().pickaxe(ModToolMaterials.RUBY, 9, -3.5f)
                     .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, "ruby_hammer")))));
-
-
+    public static final Item RUBY_HELMET = registerItem("ruby_helmet",
+            new Item(new Item.Settings().armor(ModArmorMaterials.RUBY_ARMOR, EquipmentType.HELMET)
+                    .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, "ruby_helmet")))));
+    public static final Item RUBY_CHESTPLATE = registerItem("ruby_chestplate",
+            new Item(new Item.Settings().armor(ModArmorMaterials.RUBY_ARMOR, EquipmentType.CHESTPLATE)
+                    .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, "ruby_chestplate")))));
+    public static final Item RUBY_LEGGINGS = registerItem("ruby_leggings",
+            new Item(new Item.Settings().armor(ModArmorMaterials.RUBY_ARMOR, EquipmentType.LEGGINGS)
+                    .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, "ruby_leggings")))));
+    public static final Item RUBY_BOOTS = registerItem("ruby_boots",
+            new Item(new Item.Settings().armor(ModArmorMaterials.RUBY_ARMOR, EquipmentType.BOOTS)
+                    .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, "ruby_boots")))));
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(VampireArise.MOD_ID, name), item);
     }
