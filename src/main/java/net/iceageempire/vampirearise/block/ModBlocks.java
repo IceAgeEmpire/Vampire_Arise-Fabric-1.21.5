@@ -19,9 +19,10 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.WorldAccess;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class ModBlocks {
     public static final Block RUBY_BLOCK = registerBlock("ruby_block",
@@ -31,12 +32,37 @@ public class ModBlocks {
     public static final Block RAW_RUBY_BLOCK = registerBlock("raw_ruby_block",
             AbstractBlock.Settings.create().strength(3f)
                     .requiresTool());
-
     public static final Block RUBY_ORE = registerBlock("ruby_ore",
-            ExperienceDroppingBlock.Settings.create().strength(3f).requiresTool());
-
+            ExperienceDroppingBlock.Settings.create().strength(3f).sounds(BlockSoundGroup.STONE)
+                    .requiresTool());
     public static final Block DEEPSLATE_RUBY_ORE = registerBlock("deepslate_ruby_ore",
-            ExperienceDroppingBlock.Settings.create().strength(3f).requiresTool().sounds(BlockSoundGroup.DEEPSLATE));
+            ExperienceDroppingBlock.Settings.create().strength(4.5f).sounds(BlockSoundGroup.DEEPSLATE)
+                    .requiresTool());
+    public static final Block NETHER_RUBY_ORE = registerBlock("nether_ruby_ore",
+            ExperienceDroppingBlock.Settings.create().strength(3f).sounds(BlockSoundGroup.NETHER_ORE)
+                    .requiresTool());
+
+//    public static final Block RUBY_ORE = registerXPBlock("ruby_ore", () ->
+//            new ExperienceDroppingBlock(
+//                    UniformIntProvider.create(3, 5),
+//                    ExperienceDroppingBlock.Settings.create().strength(3f).requiresTool()
+//            )
+//    );
+//    public static final Block DEEPSLATE_RUBY_ORE = registerXPBlock("deepslate_ruby_ore", () ->
+//            new ExperienceDroppingBlock(
+//                    UniformIntProvider.create(4, 6),
+//                    ExperienceDroppingBlock.Settings.create().strength(4.5f).requiresTool().
+//                            sounds(BlockSoundGroup.DEEPSLATE)
+//            )
+//    );
+//
+//    public static final Block NETHER_RUBY_ORE = registerXPBlock("nether_ruby_ore", () ->
+//            new ExperienceDroppingBlock(
+//                    UniformIntProvider.create(3, 6),
+//                    ExperienceDroppingBlock.Settings.create().strength(3f).requiresTool().
+//                            sounds(BlockSoundGroup.NETHER_ORE)
+//            )
+//    );
 
     public static final Block TURRET_BLOCK = registerBlock("turret_block",
             TurretBlock.Settings.create().strength(1f));
@@ -59,6 +85,13 @@ public class ModBlocks {
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, key, block);
     }
+    private static Block registerXPBlock(String name, Supplier<Block> blockSupplier) {
+        RegistryKey<Block> key = RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(VampireArise.MOD_ID, name));
+        Block block = blockSupplier.get();
+        registerBlockItem(name, block);
+        return Registry.register(Registries.BLOCK, key, block);
+    }
+
 
     private static void registerBlockItem(String name, Block block) {
         RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, name));
@@ -76,6 +109,7 @@ public class ModBlocks {
             entries.add(ModBlocks.RAW_RUBY_BLOCK);
             entries.add(ModBlocks.RUBY_ORE);
             entries.add(ModBlocks.DEEPSLATE_RUBY_ORE);
+            entries.add(ModBlocks.NETHER_RUBY_ORE);
         });
     }
 }

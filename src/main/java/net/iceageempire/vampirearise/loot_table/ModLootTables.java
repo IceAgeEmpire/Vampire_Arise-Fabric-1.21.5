@@ -15,8 +15,8 @@ import net.minecraft.loot.condition.RandomChanceLootCondition;
 public class ModLootTables {
     private static final Identifier GRASS_BLOCK_ID
             = Identifier.of("minecraft", "blocks/short_grass");
-    private static final Identifier CREEPER_ID
-            = Identifier.of("minecraft", "entities/creeper");
+    private static final Identifier WITCH_ID
+            = Identifier.of("minecraft", "entities/witch");
 
     public static void modifyLootTables() {
         LootTableEvents.MODIFY.register((key, tableBuilder, source, registry) -> {
@@ -39,6 +39,26 @@ public class ModLootTables {
 
                 tableBuilder.pool(poolBuilder.build());
             }
+
+            if (LootTables.SIMPLE_DUNGEON_CHEST.equals(key)) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(3))
+                        .conditionally(RandomChanceLootCondition.builder(0.5f))
+                        .with(ItemEntry.builder(ModItems.RUBY))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f)).build());
+
+                tableBuilder.pool(poolBuilder.build());
+            }
+            if (LootTables.OMINOUS_TRIAL_CHAMBER_KEY_SPAWNER.equals(key)) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(2))
+                        .conditionally(RandomChanceLootCondition.builder(1f))
+                        .with(ItemEntry.builder(ModItems.RUBY))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2, 3f)).build());
+
+                tableBuilder.pool(poolBuilder.build());
+            }
+
             if (LootTables.ABANDONED_MINESHAFT_CHEST.equals(key)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(2))
@@ -76,15 +96,15 @@ public class ModLootTables {
                 tableBuilder.pool(poolBuilder.build());
             }
 
-//            if (CREEPER_ID.equals(key.getValue())) {
-//                LootPool.Builder poolBuilder = LootPool.builder()
-//                        .rolls(ConstantLootNumberProvider.create(1))
-//                        .conditionally(RandomChanceLootCondition.builder(0.75f)) // Drops 75% of the time
-//                        .with(ItemEntry.builder(ModItems.RUBY))
-//                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
-//
-//                tableBuilder.pool(poolBuilder.build());
-//            }
+            if (WITCH_ID.equals(key.getValue())) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(RandomChanceLootCondition.builder(1f))
+                        .with(ItemEntry.builder(ModItems.RUBY))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
+
+                tableBuilder.pool(poolBuilder.build());
+            }
         });
     }
 }

@@ -5,12 +5,15 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.iceageempire.vampirearise.block.ModBlocks;
 import net.iceageempire.vampirearise.item.ModEquipmentAssets;
 import net.iceageempire.vampirearise.item.ModItems;
 import net.iceageempire.vampirearise.util.ModTags;
+import net.iceageempire.vampirearise.world.ModConfiguredFeatures;
+import net.iceageempire.vampirearise.world.ModPlacedFeatures;
 import net.minecraft.client.data.*;
 import net.minecraft.client.render.model.json.WeightedVariant;
 import net.minecraft.data.recipe.RecipeExporter;
@@ -19,6 +22,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
@@ -40,7 +44,31 @@ public class VampireAriseDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModBlockLootTableProvider::new);
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModRecipeProvider::new);
+		pack.addProvider(ModRegistryDataGenerator::new);
 		//pack.addProvider(ModChestLootTableProvider::new);
+	}
+	@Override
+	public void buildRegistry(RegistryBuilder registryBuilder){
+		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
+		registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
+	}
+
+	public static class ModRegistryDataGenerator extends FabricDynamicRegistryProvider{
+
+		public ModRegistryDataGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+			super(output, registriesFuture);
+		}
+
+		@Override
+		protected void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
+			entries.addAll(registries.getOrThrow(RegistryKeys.CONFIGURED_FEATURE));
+			entries.addAll(registries.getOrThrow(RegistryKeys.PLACED_FEATURE));
+		}
+
+		@Override
+		public String getName() {
+			return "";
+		}
 	}
 
 	private static class ModTagGenerator extends FabricTagProvider.ItemTagProvider {
@@ -76,6 +104,7 @@ public class VampireAriseDataGenerator implements DataGeneratorEntrypoint {
 			addDrop(ModBlocks.RAW_RUBY_BLOCK);
 			addDrop(ModBlocks.RUBY_ORE, oreDrops(ModBlocks.RUBY_ORE,ModItems.RAW_RUBY));
 			addDrop(ModBlocks.DEEPSLATE_RUBY_ORE, oreDrops(ModBlocks.DEEPSLATE_RUBY_ORE,ModItems.RAW_RUBY));
+			addDrop(ModBlocks.NETHER_RUBY_ORE, oreDrops(ModBlocks.NETHER_RUBY_ORE,ModItems.RAW_RUBY));
 			addDrop(ModBlocks.WACTHER_BLOCK);
 		}
 	}
@@ -91,6 +120,7 @@ public class VampireAriseDataGenerator implements DataGeneratorEntrypoint {
 			blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_RUBY_BLOCK);
 			blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RUBY_ORE);
 			blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_RUBY_ORE);
+			blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.NETHER_RUBY_ORE);
 			blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.TURRET_BLOCK);
 
 			WeightedVariant weightedVariant = createWeightedVariant(TexturedModel.CUBE_ALL.upload(ModBlocks.WACTHER_BLOCK, blockStateModelGenerator.modelCollector));
@@ -146,7 +176,7 @@ public class VampireAriseDataGenerator implements DataGeneratorEntrypoint {
 				@Override
 				public void generate() {
 					List<ItemConvertible> RUBY_SMELTABLES = List.of(ModItems.RAW_RUBY, ModBlocks.RUBY_ORE,
-							ModBlocks.DEEPSLATE_RUBY_ORE);
+							ModBlocks.DEEPSLATE_RUBY_ORE, ModBlocks.NETHER_RUBY_ORE);
 
 					offerSmelting(RUBY_SMELTABLES, RecipeCategory.MISC, ModItems.RUBY, 0.25f, 200, "ruby");
 					offerBlasting(RUBY_SMELTABLES, RecipeCategory.MISC, ModItems.RUBY, 0.25f, 100, "ruby");
