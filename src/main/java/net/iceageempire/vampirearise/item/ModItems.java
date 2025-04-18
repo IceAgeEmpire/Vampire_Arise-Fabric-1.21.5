@@ -44,16 +44,16 @@ public class ModItems {
             new RubyHammerItem(new Item.Settings().pickaxe(ModToolMaterials.RUBY, 9, -3.5f)
                     .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, "ruby_hammer")))));
     public static final Item RUBY_HELMET = registerItem("ruby_helmet",
-            new Item(new Item.Settings().armor(ModArmorMaterials.RUBY_ARMOR, EquipmentType.HELMET)
+            new ModArmorItem(new Item.Settings().armor(ModArmorMaterials.RUBY_ARMOR, EquipmentType.HELMET)
                     .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, "ruby_helmet")))));
     public static final Item RUBY_CHESTPLATE = registerItem("ruby_chestplate",
-            new Item(new Item.Settings().armor(ModArmorMaterials.RUBY_ARMOR, EquipmentType.CHESTPLATE)
+            new ModArmorItem(new Item.Settings().armor(ModArmorMaterials.RUBY_ARMOR, EquipmentType.CHESTPLATE)
                     .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, "ruby_chestplate")))));
     public static final Item RUBY_LEGGINGS = registerItem("ruby_leggings",
-            new Item(new Item.Settings().armor(ModArmorMaterials.RUBY_ARMOR, EquipmentType.LEGGINGS)
+            new ModArmorItem(new Item.Settings().armor(ModArmorMaterials.RUBY_ARMOR, EquipmentType.LEGGINGS)
                     .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, "ruby_leggings")))));
     public static final Item RUBY_BOOTS = registerItem("ruby_boots",
-            new Item(new Item.Settings().armor(ModArmorMaterials.RUBY_ARMOR, EquipmentType.BOOTS)
+            new ModArmorItem(new Item.Settings().armor(ModArmorMaterials.RUBY_ARMOR, EquipmentType.BOOTS)
                     .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, "ruby_boots")))));
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(VampireArise.MOD_ID, name), item);

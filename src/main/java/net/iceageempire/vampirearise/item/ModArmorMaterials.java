@@ -26,4 +26,6 @@ public class ModArmorMaterials {
             0, // Knockback Resistance
             TagKey.of(RegistryKeys.ITEM, Identifier.of("vampirearise", "ruby_repair")),
             ModEquipmentAssets.RUBY_ARMOR_MATERIAL_KEY);
+
+
 }

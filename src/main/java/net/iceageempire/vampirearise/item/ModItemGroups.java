@@ -41,6 +41,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.RAW_RUBY_BLOCK);
                         entries.add(ModBlocks.RUBY_ORE);
                         entries.add(ModBlocks.DEEPSLATE_RUBY_ORE);
+                        entries.add(ModBlocks.NETHER_RUBY_ORE);
                         entries.add(ModBlocks.TURRET_BLOCK);
                         entries.add(ModBlocks.WACTHER_BLOCK);
                     }).build());
