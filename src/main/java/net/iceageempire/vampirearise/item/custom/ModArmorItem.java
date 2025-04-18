@@ -45,35 +45,25 @@ public class ModArmorItem extends Item {
         super(settings);
     }
 
-
     @Override
     public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
-        if(!world.isClient()) {
-            if(entity instanceof PlayerEntity player) {
-                if(hasFullSuitOfArmorOn(player)) {
-                    blindnessTimer--;
-                    StatusEffectInstance effect = player.getStatusEffect(StatusEffects.REGENERATION);
-                    if(effect != null){
-                        if(blindnessTimer <= 0){
-                            player.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 300, 0, false, false, true));
-                            Random rand = new Random();
-                            int nextBlindess = rand.nextInt(4800) + 12000;
-                            blindnessTimer+=nextBlindess;
-                        }
-                        if(effect.getDuration()<20){
-                            player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 200, 0, false, false, true));
+        if(!world.isClient() && entity instanceof PlayerEntity player && hasFullSuitOfArmorOn(player)) {
+            if (slot == EquipmentSlot.HEAD) blindnessTimer--;
 
-                        }
-                    }
-                    else {
-                        player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 200, 0, false, false, true));
-                    }
+            StatusEffectInstance effect = player.getStatusEffect(StatusEffects.REGENERATION);
 
-                    if(world.isDay() && world.isSkyVisible(player.getBlockPos())){
-                       player.setFireTicks(100);
-                    }
-                }
+            if(effect==null) {
+                player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 200, 0, false, false, true));
             }
+            else if (effect.getDuration()<20) player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 200, 0, false, false, true));
+
+            if(blindnessTimer <= 0){
+                player.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 300, 0, false, false, true));
+                Random rand = new Random();
+                int nextBlindess = rand.nextInt(4800) + 12000;
+                blindnessTimer+=nextBlindess;
+            }
+            if(world.isDay() && world.isSkyVisible(player.getBlockPos()) && !player.isSubmergedInWater()&& !player.hasStatusEffect(StatusEffects.FIRE_RESISTANCE)) player.setFireTicks(100);
         }
         super.inventoryTick(stack, world, entity, slot);
     }
