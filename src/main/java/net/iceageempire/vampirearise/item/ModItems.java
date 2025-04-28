@@ -2,6 +2,7 @@ package net.iceageempire.vampirearise.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.iceageempire.vampirearise.VampireArise;
+import net.iceageempire.vampirearise.block.ModBlocks;
 import net.iceageempire.vampirearise.item.custom.*;
 import net.minecraft.item.*;
 import net.minecraft.item.equipment.EquipmentType;
@@ -55,6 +56,15 @@ public class ModItems {
     public static final Item RUBY_BOOTS = registerItem("ruby_boots",
             new ModArmorItem(new Item.Settings().armor(ModArmorMaterials.RUBY_ARMOR, EquipmentType.BOOTS)
                     .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, "ruby_boots")))));
+
+    public static final Item PINEAPPLE = registerItem("pineapple", new Item(new Item.Settings()
+            .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID,"pineapple")))
+            .food(ModFoodComponents.PINEAPPLE)));
+
+    public static final Item PINEAPPLE_SEEDS = registerItem("pineapple_seeds",
+            new BlockItem(ModBlocks.PINEAPPLE_CROP, new Item.Settings().
+                    registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(VampireArise.MOD_ID, "pineapple_seeds")))));
+
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(VampireArise.MOD_ID, name), item);
     }
@@ -76,9 +86,14 @@ public class ModItems {
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
             entries.add(RUBY_POTATO);
+            entries.add(PINEAPPLE);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
             entries.add(RUBY_SWORD);
+        });
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
+                    entries.add(PINEAPPLE_SEEDS);
         });
 
     }

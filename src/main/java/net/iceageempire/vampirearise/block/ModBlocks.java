@@ -3,12 +3,11 @@ package net.iceageempire.vampirearise.block;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.iceageempire.vampirearise.VampireArise;
+import net.iceageempire.vampirearise.block.custom.PineappleCropBlock;
 import net.iceageempire.vampirearise.block.custom.TurretBlock;
 import net.iceageempire.vampirearise.block.custom.WatcherBlock;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ExperienceDroppingBlock;
+import net.minecraft.block.*;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -68,8 +67,17 @@ public class ModBlocks {
             TurretBlock.Settings.create().strength(1f));
 
     public static final Block WACTHER_BLOCK = registerBlockV2("watcher_block",
-            WatcherBlock::new,Block.Settings.create().strength(1f).luminance(state-> state.get(WatcherBlock.CLICKED) ? 15 : 0));
+            WatcherBlock::new, Block.Settings.create().strength(1f).luminance(state-> state.get(WatcherBlock.CLICKED) ? 15 : 0));
 
+    public static final Block PINEAPPLE_CROP = registerBlockV2("pineapple_crop",
+            PineappleCropBlock::new, Block.Settings.create()
+            .noCollision()
+            .ticksRandomly()
+            .breakInstantly()
+            .sounds(BlockSoundGroup.CROP)
+            .pistonBehavior(PistonBehavior.DESTROY)
+            .mapColor(MapColor.YELLOW)
+    );
 
     private static Block registerBlockV2(String path, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
         final Identifier identifier = Identifier.of("vampirearise", path);
@@ -110,6 +118,9 @@ public class ModBlocks {
             entries.add(ModBlocks.RUBY_ORE);
             entries.add(ModBlocks.DEEPSLATE_RUBY_ORE);
             entries.add(ModBlocks.NETHER_RUBY_ORE);
+        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.REDSTONE).register(entries -> {
+            entries.add(ModBlocks.WACTHER_BLOCK);
         });
     }
 }

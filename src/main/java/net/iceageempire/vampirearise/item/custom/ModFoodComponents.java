@@ -20,4 +20,6 @@ public class ModFoodComponents {
             )
             .build();
 
+    public static final FoodComponent PINEAPPLE = new FoodComponent.Builder().nutrition(5).saturationModifier(0.6f)
+            .build();
 }

@@ -3,6 +3,7 @@ package net.iceageempire.vampirearise;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.iceageempire.vampirearise.block.ModBlocks;
 import net.iceageempire.vampirearise.component.ModDataComponentTypes;
@@ -30,5 +31,8 @@ public class VampireArise implements ModInitializer {
 
 		FuelRegistryEvents.BUILD.register((builder, context) ->
 				builder.add(ModItems.DECAY_WAND, 200));
+
+		CompostingChanceRegistry.INSTANCE.add(ModItems.PINEAPPLE_SEEDS, 0.25f);
+		CompostingChanceRegistry.INSTANCE.add(ModItems.PINEAPPLE, 1f);
 	}
 }

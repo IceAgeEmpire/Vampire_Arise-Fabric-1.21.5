@@ -20,7 +20,11 @@
   "item.vampirearise.deepslate_ruby_ore": "Deepslate Ruby Ore",
   "item.vampirearise.nether_ruby_ore": "Nether Ruby Ore",
   "item.vampirearise.turret_block": "Turret Block",
+  "item.vampirearise.pineapple": "Pineapple",
+  "item.vampirearise.pineapple_seeds": "Pineapple Seeds",
+
   "block.vampirearise.watcher_block": "Watcher",
+  "block.vampirearise.pineapple_crop": "Pineapple Crop",
 
   "itemgroup.vampirearise.ruby_items": "Ruby Items",
   "itemgroup.vampirearise.ruby_blocks": "Ruby Blocks"

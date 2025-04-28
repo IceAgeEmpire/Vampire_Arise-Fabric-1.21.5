@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.iceageempire.vampirearise.block.ModBlocks;
+import net.iceageempire.vampirearise.block.custom.PineappleCropBlock;
 import net.iceageempire.vampirearise.item.ModEquipmentAssets;
 import net.iceageempire.vampirearise.item.ModItems;
 import net.iceageempire.vampirearise.util.ModTags;
@@ -21,6 +22,8 @@ import net.minecraft.data.recipe.RecipeGenerator;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
+import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
+import net.minecraft.predicate.StatePredicate;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
@@ -106,6 +109,11 @@ public class VampireAriseDataGenerator implements DataGeneratorEntrypoint {
 			addDrop(ModBlocks.DEEPSLATE_RUBY_ORE, oreDrops(ModBlocks.DEEPSLATE_RUBY_ORE,ModItems.RAW_RUBY));
 			addDrop(ModBlocks.NETHER_RUBY_ORE, oreDrops(ModBlocks.NETHER_RUBY_ORE,ModItems.RAW_RUBY));
 			addDrop(ModBlocks.WACTHER_BLOCK);
+
+			BlockStatePropertyLootCondition.Builder builder2 = BlockStatePropertyLootCondition.builder(ModBlocks.PINEAPPLE_CROP)
+					.properties(StatePredicate.Builder.create().exactMatch(PineappleCropBlock.AGE, PineappleCropBlock.MAX_AGE));
+			this.addDrop(ModBlocks.PINEAPPLE_CROP, this.cropDrops(ModBlocks.PINEAPPLE_CROP, ModItems.PINEAPPLE, ModItems.PINEAPPLE_SEEDS, builder2));
+
 		}
 	}
 
@@ -129,6 +137,7 @@ public class VampireAriseDataGenerator implements DataGeneratorEntrypoint {
 			blockStateModelGenerator.blockStateCollector
 					.accept(VariantsBlockModelDefinitionCreator.of(ModBlocks.WACTHER_BLOCK).with(createBooleanModelMap(CLICKED, weightedVariant2, weightedVariant)));
 
+			blockStateModelGenerator.registerCrop(ModBlocks.PINEAPPLE_CROP, PineappleCropBlock.AGE, 0,1,2,3,4,5,6);
 		}
 
 		@Override
@@ -136,6 +145,8 @@ public class VampireAriseDataGenerator implements DataGeneratorEntrypoint {
 			itemModelGenerator.register(ModItems.RUBY, Models.GENERATED);
 			itemModelGenerator.register(ModItems.RAW_RUBY, Models.GENERATED);
 			itemModelGenerator.register(ModItems.RUBY_POTATO, Models.GENERATED);
+			itemModelGenerator.register(ModItems.PINEAPPLE, Models.GENERATED);
+
 			itemModelGenerator.register(ModItems.RUBY_SWORD, Models.HANDHELD);
 			itemModelGenerator.register(ModItems.DECAY_WAND, Models.HANDHELD);
 			itemModelGenerator.register(ModItems.RUBY_AXE, Models.HANDHELD);
@@ -143,6 +154,7 @@ public class VampireAriseDataGenerator implements DataGeneratorEntrypoint {
 			itemModelGenerator.register(ModItems.RUBY_PICKAXE, Models.HANDHELD);
 			itemModelGenerator.register(ModItems.RUBY_SHOVEL, Models.HANDHELD);
 			itemModelGenerator.register(ModItems.RUBY_HAMMER, Models.HANDHELD);
+
 			itemModelGenerator.registerArmor(
 					ModItems.RUBY_HELMET,
 					ModEquipmentAssets.RUBY_ARMOR_MATERIAL_KEY,
