@@ -196,6 +196,11 @@ public class VampireAriseDataGenerator implements DataGeneratorEntrypoint {
 					offerReversibleCompactingRecipes(RecipeCategory.MISC, ModItems.RAW_RUBY, RecipeCategory.MISC, ModBlocks.RAW_RUBY_BLOCK);
 					offerReversibleCompactingRecipes(RecipeCategory.BUILDING_BLOCKS, ModItems.RUBY, RecipeCategory.DECORATIONS, ModBlocks.RUBY_BLOCK);
 
+					createShapeless(RecipeCategory.MISC, ModItems.PINEAPPLE_SEEDS,4 )
+							.input(ModItems.PINEAPPLE)
+							.criterion(hasItem(ModItems.PINEAPPLE), conditionsFromItem(ModItems.PINEAPPLE))
+							.offerTo(exporter);
+
 					createShaped(RecipeCategory.TOOLS, ModItems.RUBY_PICKAXE)
 							.pattern("OOO")
 							.pattern(" # ")

@@ -30,6 +30,24 @@ public class ModLootTables {
 //                tableBuilder.pool(poolBuilder.build());
 //            }
 
+            if (LootTables.VILLAGE_PLAINS_CHEST.equals(key)) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(2))
+                        .conditionally(RandomChanceLootCondition.builder(0.5f))
+                        .with(ItemEntry.builder(ModItems.PINEAPPLE))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
+
+                tableBuilder.pool(poolBuilder.build());
+            }
+            if (LootTables.JUNGLE_TEMPLE_CHEST.equals(key)) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(2))
+                        .conditionally(RandomChanceLootCondition.builder(0.5f))
+                        .with(ItemEntry.builder(ModItems.PINEAPPLE_SEEDS))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f)).build());
+
+                tableBuilder.pool(poolBuilder.build());
+            }
             if (LootTables.DESERT_PYRAMID_CHEST.equals(key)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(2))
