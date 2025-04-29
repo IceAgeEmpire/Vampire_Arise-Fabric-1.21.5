@@ -301,6 +301,38 @@ public class VampireAriseDataGenerator implements DataGeneratorEntrypoint {
 							.input('#', Items.STICK)
 							.criterion(hasItem(ModItems.RUBY), conditionsFromItem(ModItems.RUBY))
 							.offerTo(exporter);
+
+					createShaped(RecipeCategory.TOOLS, ModItems.RUBY_HELMET)
+							.pattern("###")
+							.pattern("# #")
+							.pattern("   ")
+							.input('#', ModItems.RUBY)
+							.criterion(hasItem(ModItems.RUBY), conditionsFromItem(ModItems.RUBY))
+							.offerTo(exporter);
+
+					createShaped(RecipeCategory.TOOLS, ModItems.RUBY_CHESTPLATE)
+							.pattern("# #")
+							.pattern("###")
+							.pattern("###")
+							.input('#', ModItems.RUBY)
+							.criterion(hasItem(ModItems.RUBY), conditionsFromItem(ModItems.RUBY))
+							.offerTo(exporter);
+
+					createShaped(RecipeCategory.TOOLS, ModItems.RUBY_LEGGINGS)
+							.pattern("###")
+							.pattern("# #")
+							.pattern("# #")
+							.input('#', ModItems.RUBY)
+							.criterion(hasItem(ModItems.RUBY), conditionsFromItem(ModItems.RUBY))
+							.offerTo(exporter);
+
+					createShaped(RecipeCategory.TOOLS, ModItems.RUBY_BOOTS)
+							.pattern("# #")
+							.pattern("# #")
+							.pattern("   ")
+							.input('#', ModItems.RUBY)
+							.criterion(hasItem(ModItems.RUBY), conditionsFromItem(ModItems.RUBY))
+							.offerTo(exporter);
 				}
 			};
 		}
